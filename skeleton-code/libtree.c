@@ -147,7 +147,7 @@ exit:;
    */
   free_file_list(&file_list, file_count);
   closedir(dirp);
-  close(dir);
+  /*close(dir)*/
 
   cur_dir = sav_dir;
   return errno ? -1 : 0;
