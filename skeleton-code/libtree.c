@@ -146,7 +146,11 @@ exit:;
    *       look for open*() function calls for file related allocations
    */
   free_file_list(&file_list, file_count);
+  if (dirp != NULL)
+  {
   closedir(dirp);
+  }
+
   /*close(dir)*/
 
   cur_dir = sav_dir;
