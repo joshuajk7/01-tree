@@ -100,8 +100,8 @@ tree_print_recurse(struct fileinfo finfo)
   for (int i=0; i < 2 * depth; ++i)
   {
     putchar(' ');
-    putchar('\n');
   }
+  putchar('\n');
 
   /* TODO: print the path info */
   print_path_info(finfo);
