@@ -97,7 +97,10 @@ tree_print_recurse(struct fileinfo finfo)
   }
 
   /* TODO: print indentation */
-  for (int i=0; i < opts.indent * depth; ++i) putchar(' ');
+  for (int i=0; i < 2 * depth; ++i)
+  {
+    putchar(' ');
+  }
 
   /* TODO: print the path info */
   print_path_info(finfo);
@@ -239,7 +242,7 @@ read_file_list(DIR *dirp, struct fileinfo **file_list, size_t *file_count)
     if (strcoll(de->d_name, ".") == 0 || strcoll(de->d_name, "..") == 0) continue;
 
     /* TODO: Skip hidden files? */
-    if (opts.skip_hidden && de->d_name[0] == '.') continue;
+    if (de->d_name[0] == '.') continue;
 
     ++(*file_count);
     (*file_list) = realloc((*file_list), sizeof *(*file_list) * (*file_count));
