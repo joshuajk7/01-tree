@@ -97,14 +97,11 @@ tree_print_recurse(struct fileinfo finfo)
   }
 
   /* TODO: print indentation */
-  for (int i=0; i < 2 * depth; ++i)
-  {
-    putchar(' ');
-  }
-  putchar('\n');
+  for (int i=0; i < opts.indent * depth; ++i) putchar(' ');
 
   /* TODO: print the path info */
   print_path_info(finfo);
+  goto exit;
 
   /* TODO: continue ONLY if path is a directory */
   if (!S_ISDIR(finfo.st.st_mode))
@@ -151,8 +148,6 @@ exit:;
   {
   closedir(dirp);
   }
-
-  /*close(dir)*/
 
   cur_dir = sav_dir;
   return errno ? -1 : 0;
